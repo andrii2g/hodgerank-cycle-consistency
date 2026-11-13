@@ -1,0 +1,175 @@
+<svg width="1440" height="950" viewBox="0 0 1440 950" role="img" aria-labelledby="report-title report-description" xmlns="http://www.w3.org/2000/svg">
+  <title id="report-title">HodgeRank: ranking and cycle consistency</title>
+  <desc id="report-description">Three graphs use identical node positions to compare observed preferences, globally consistent score differences, and the remaining cyclic flow. Arrows follow the sign of each flow. Scores are shown on the nodes; hover over an edge or node for its full value.</desc>
+  <style>text { font-family: 'Segoe UI', Arial, sans-serif; fill: #172033; }
+.muted { fill: #56647a; }
+.card-label { font-size: 12px; letter-spacing: .6px; }
+.metric { font-size: 25px; font-weight: 650; }
+.node-name { font-size: 12px; font-weight: 650; }
+.node-score { font-variant-numeric: tabular-nums; }
+.edge-label { font-size: 11px; paint-order: stroke; stroke: white; stroke-width: 4px; stroke-linejoin: round; }
+.edge:hover line { opacity: 1; stroke-width: 4; }</style>
+  <rect width="1440" height="950" fill="#f3f6fb" />
+  <text x="36" y="52" font-size="32" font-weight="700">HodgeRank</text>
+  <text x="225" y="52" font-size="25" fill="#56647a">Ranking &amp; cycle consistency</text>
+  <text x="36" y="81" font-size="16" class="muted">Pairwise observations = consistent score differences + cyclic residual</text>
+  <rect x="36" y="108" width="218" height="86" rx="12" fill="white" stroke="#e1e7f0" />
+  <text x="50" y="129" font-size="12" class="card-label muted">CYCLE INCONSISTENCY</text>
+  <text x="50" y="159" font-size="25" class="metric">100%</text>
+  <text x="50" y="179" font-size="11" class="muted">fraction of observed flow energy</text>
+  <rect x="266" y="108" width="218" height="86" rx="12" fill="white" stroke="#e1e7f0" />
+  <text x="280" y="129" font-size="12" class="card-label muted">LEAST-SQUARES ERROR</text>
+  <text x="280" y="159" font-size="25" class="metric">3</text>
+  <text x="280" y="179" font-size="11" class="muted">sum of squared residuals</text>
+  <rect x="496" y="108" width="218" height="86" rx="12" fill="white" stroke="#e1e7f0" />
+  <text x="510" y="129" font-size="12" class="card-label muted">INDEPENDENT CYCLES</text>
+  <text x="510" y="159" font-size="25" class="metric">1</text>
+  <text x="510" y="179" font-size="11" class="muted">m − n + 1</text>
+  <rect x="726" y="108" width="218" height="86" rx="12" fill="white" stroke="#e1e7f0" />
+  <text x="740" y="129" font-size="12" class="card-label muted">COMPARISONS</text>
+  <text x="740" y="159" font-size="25" class="metric">3</text>
+  <text x="740" y="179" font-size="11" class="muted">3 objects · connected graph</text>
+  <rect x="956" y="108" width="218" height="86" rx="12" fill="white" stroke="#e1e7f0" />
+  <text x="970" y="129" font-size="12" class="card-label muted">LAPLACIAN RESIDUAL</text>
+  <text x="970" y="159" font-size="25" class="metric">0</text>
+  <text x="970" y="179" font-size="11" class="muted">numerical solve accuracy</text>
+  <rect x="1186" y="108" width="218" height="86" rx="12" fill="white" stroke="#e1e7f0" />
+  <text x="1200" y="129" font-size="12" class="card-label muted">CALCULATION TIME</text>
+  <text x="1200" y="159" font-size="25" class="metric">0.0522 ms</text>
+  <text x="1200" y="179" font-size="11" class="muted">excludes report and file output</text>
+  <rect x="36" y="218" width="448" height="542" rx="16" fill="white" stroke="#dfe6f0" />
+  <rect x="54" y="242" width="5" height="24" rx="2" fill="#2563eb" />
+  <text x="70" y="261" font-size="22" font-weight="650">Observed preferences</text>
+  <text x="58" y="287" font-size="12" class="muted">The strengths supplied in the input</text>
+  <defs>
+    <marker id="observed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+    </marker>
+  </defs>
+  <g class="edge">
+    <title>A minus B: 1 (A → B)</title>
+    <line x1="273.279" y1="375" x2="383.553" y2="566" stroke="#2563eb" stroke-width="4.4" opacity="0.76" marker-end="url(#observed)" />
+    <text x="328.416" y="465.5" font-size="11" class="edge-label" text-anchor="middle" fill="#2563eb">1</text>
+  </g>
+  <g class="edge">
+    <title>B minus C: 1 (B → C)</title>
+    <line x1="356.832" y1="589" x2="163.168" y2="589" stroke="#2563eb" stroke-width="4.4" opacity="0.76" marker-end="url(#observed)" />
+    <text x="260" y="584" font-size="11" class="edge-label" text-anchor="middle" fill="#2563eb">1</text>
+  </g>
+  <g class="edge">
+    <title>A minus C: -1 (C → A)</title>
+    <line x1="136.447" y1="566" x2="246.721" y2="375" stroke="#2563eb" stroke-width="4.4" opacity="0.76" marker-end="url(#observed)" />
+    <text x="191.584" y="465.5" font-size="11" class="edge-label" text-anchor="middle" fill="#2563eb">1</text>
+  </g>
+  <g>
+    <title>A: score 0</title>
+    <rect x="222" y="331" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="260" y="349" font-size="12" class="node-name" text-anchor="middle">A</text>
+    <text x="260" y="364" font-size="11" class="node-score" text-anchor="middle" fill="#2563eb">0</text>
+  </g>
+  <g>
+    <title>B: score 0</title>
+    <rect x="358.832" y="568" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="396.832" y="586" font-size="12" class="node-name" text-anchor="middle">B</text>
+    <text x="396.832" y="601" font-size="11" class="node-score" text-anchor="middle" fill="#2563eb">0</text>
+  </g>
+  <g>
+    <title>C: score 0</title>
+    <rect x="85.168" y="568" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="123.168" y="586" font-size="12" class="node-name" text-anchor="middle">C</text>
+    <text x="123.168" y="601" font-size="11" class="node-score" text-anchor="middle" fill="#2563eb">0</text>
+  </g>
+  <text x="260" y="739" font-size="12" class="muted" text-anchor="middle">Edge magnitude · node score</text>
+  <rect x="496" y="218" width="448" height="542" rx="16" fill="white" stroke="#dfe6f0" />
+  <rect x="514" y="242" width="5" height="24" rx="2" fill="#0d9488" />
+  <text x="530" y="261" font-size="22" font-weight="650">Consistent component</text>
+  <text x="518" y="287" font-size="12" class="muted">Differences between the global scores: Bs</text>
+  <defs>
+    <marker id="consistent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d9488" />
+    </marker>
+  </defs>
+  <g class="edge">
+    <title>A minus B: 0 (tie / zero flow)</title>
+    <line x1="733.279" y1="375" x2="843.553" y2="566" stroke="#b7c4d5" stroke-width="1" opacity="0.35" stroke-dasharray="3 5" />
+    <text x="788.416" y="465.5" font-size="11" class="edge-label" text-anchor="middle" fill="#8290a5">0</text>
+  </g>
+  <g class="edge">
+    <title>B minus C: 0 (tie / zero flow)</title>
+    <line x1="816.832" y1="589" x2="623.168" y2="589" stroke="#b7c4d5" stroke-width="1" opacity="0.35" stroke-dasharray="3 5" />
+    <text x="720" y="584" font-size="11" class="edge-label" text-anchor="middle" fill="#8290a5">0</text>
+  </g>
+  <g class="edge">
+    <title>A minus C: 0 (tie / zero flow)</title>
+    <line x1="706.721" y1="375" x2="596.447" y2="566" stroke="#b7c4d5" stroke-width="1" opacity="0.35" stroke-dasharray="3 5" />
+    <text x="651.584" y="465.5" font-size="11" class="edge-label" text-anchor="middle" fill="#8290a5">0</text>
+  </g>
+  <g>
+    <title>A: score 0</title>
+    <rect x="682" y="331" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="720" y="349" font-size="12" class="node-name" text-anchor="middle">A</text>
+    <text x="720" y="364" font-size="11" class="node-score" text-anchor="middle" fill="#0d9488">0</text>
+  </g>
+  <g>
+    <title>B: score 0</title>
+    <rect x="818.832" y="568" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="856.832" y="586" font-size="12" class="node-name" text-anchor="middle">B</text>
+    <text x="856.832" y="601" font-size="11" class="node-score" text-anchor="middle" fill="#0d9488">0</text>
+  </g>
+  <g>
+    <title>C: score 0</title>
+    <rect x="545.168" y="568" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="583.168" y="586" font-size="12" class="node-name" text-anchor="middle">C</text>
+    <text x="583.168" y="601" font-size="11" class="node-score" text-anchor="middle" fill="#0d9488">0</text>
+  </g>
+  <text x="720" y="739" font-size="12" class="muted" text-anchor="middle">Edge magnitude · node score</text>
+  <rect x="956" y="218" width="448" height="542" rx="16" fill="white" stroke="#dfe6f0" />
+  <rect x="974" y="242" width="5" height="24" rx="2" fill="#d65d4f" />
+  <text x="990" y="261" font-size="22" font-weight="650">Cyclic residual</text>
+  <text x="978" y="287" font-size="12" class="muted">What score differences cannot explain: y − Bs</text>
+  <defs>
+    <marker id="residual" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d65d4f" />
+    </marker>
+  </defs>
+  <g class="edge">
+    <title>A minus B: 1 (A → B)</title>
+    <line x1="1193.279" y1="375" x2="1303.553" y2="566" stroke="#d65d4f" stroke-width="4.4" opacity="0.76" marker-end="url(#residual)" />
+    <text x="1248.416" y="465.5" font-size="11" class="edge-label" text-anchor="middle" fill="#d65d4f">1</text>
+  </g>
+  <g class="edge">
+    <title>B minus C: 1 (B → C)</title>
+    <line x1="1276.832" y1="589" x2="1083.168" y2="589" stroke="#d65d4f" stroke-width="4.4" opacity="0.76" marker-end="url(#residual)" />
+    <text x="1180" y="584" font-size="11" class="edge-label" text-anchor="middle" fill="#d65d4f">1</text>
+  </g>
+  <g class="edge">
+    <title>A minus C: -1 (C → A)</title>
+    <line x1="1056.447" y1="566" x2="1166.721" y2="375" stroke="#d65d4f" stroke-width="4.4" opacity="0.76" marker-end="url(#residual)" />
+    <text x="1111.584" y="465.5" font-size="11" class="edge-label" text-anchor="middle" fill="#d65d4f">1</text>
+  </g>
+  <g>
+    <title>A: score 0</title>
+    <rect x="1142" y="331" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="1180" y="349" font-size="12" class="node-name" text-anchor="middle">A</text>
+    <text x="1180" y="364" font-size="11" class="node-score" text-anchor="middle" fill="#d65d4f">0</text>
+  </g>
+  <g>
+    <title>B: score 0</title>
+    <rect x="1278.832" y="568" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="1316.832" y="586" font-size="12" class="node-name" text-anchor="middle">B</text>
+    <text x="1316.832" y="601" font-size="11" class="node-score" text-anchor="middle" fill="#d65d4f">0</text>
+  </g>
+  <g>
+    <title>C: score 0</title>
+    <rect x="1005.168" y="568" width="76" height="42" rx="10" fill="#ffffff" stroke="#becbdd" />
+    <text x="1043.168" y="586" font-size="12" class="node-name" text-anchor="middle">C</text>
+    <text x="1043.168" y="601" font-size="11" class="node-score" text-anchor="middle" fill="#d65d4f">0</text>
+  </g>
+  <text x="1180" y="739" font-size="12" class="muted" text-anchor="middle">Edge magnitude · node score</text>
+  <rect x="36" y="780" width="1368" height="140" rx="12" fill="#e9eff8" stroke="#dce5f1" />
+  <text x="54" y="805" font-size="13" class="muted">Arrows follow flow signs; observed arrows point from preferred to less preferred. Edge labels show magnitudes.</text>
+  <text x="54" y="828" font-size="13" class="muted">Nodes show zero-mean global scores. Line widths share one scale across all panels; hover for full labels and signed values.</text>
+  <text x="54" y="851" font-size="13" class="muted">A residual measures disagreement with score differences; it does not identify a uniquely wrong comparison.</text>
+  <text x="54" y="874" font-size="13" class="muted">Very small flows relative to the report scale appear as dashed zero flows; their full values remain available on hover.</text>
+  <text x="54" y="897" font-size="13" class="muted">Inconsistency concerns additive strengths; it may occur even when the preference directions are transitive.</text>
+</svg>
