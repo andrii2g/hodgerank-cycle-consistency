@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/HodgeRank.Cli/HodgeRank.Cli.csproj" />
     <Project Path="src/HodgeRank.Core/HodgeRank.Core.csproj" />
   </Folder>
   <Folder Name="/tests/">

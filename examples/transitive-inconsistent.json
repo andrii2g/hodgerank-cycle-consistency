@@ -1,0 +1,8 @@
+{
+  "objects": ["A", "B", "C"],
+  "comparisons": [
+    { "first": "A", "second": "B", "strength": 1 },
+    { "first": "B", "second": "C", "strength": 1 },
+    { "first": "A", "second": "C", "strength": 1 }
+  ]
+}

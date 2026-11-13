@@ -92,6 +92,12 @@
           "xunit.extensibility.core": "[2.9.3]"
         }
       },
+      "hodgerank.cli": {
+        "type": "Project",
+        "dependencies": {
+          "HodgeRank.Core": "[1.0.0, )"
+        }
+      },
       "hodgerank.core": {
         "type": "Project",
         "dependencies": {

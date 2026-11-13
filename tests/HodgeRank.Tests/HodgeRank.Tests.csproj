@@ -13,6 +13,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="../../src/HodgeRank.Cli/HodgeRank.Cli.csproj" />
     <ProjectReference Include="../../src/HodgeRank.Core/HodgeRank.Core.csproj" />
   </ItemGroup>
 </Project>
