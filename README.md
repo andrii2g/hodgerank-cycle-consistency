@@ -132,9 +132,6 @@ to verify a different built CLI. NumPy is pinned in `tools/requirements.txt`.
 
 The xUnit suite covers exact demonstrations, graph and JSON validation, projection
 identities, orientation/order invariance, output preservation, and SVG XML safety.
-The CI workflow runs the tests and NumPy checker on Windows and Linux and saves
-the demo reports as artifacts. Its hosted results are available after commits
-are pushed and GitHub Actions runs.
 
 ## Project structure
 
